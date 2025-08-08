@@ -1,23 +1,31 @@
 class Solution:
-    def runningSum(self, nums):
-        result = [0] * len(nums)  
-        # TODO: Write your code here
-        # [0, 0, 0, 0, 0]
-        # [             ]
-        for i, n in enumerate(nums):
-            if result[0] != nums[0]:
-                result[0] = nums[i]
-            else:
-                result[i] = result[i - 1] + n
+    def runningSum(sum, nums):
+        # check if array is none or has no elements and return an empty list if true
+        if nums is None or len(nums) == 0:
+            return []
+        
+        # init a list to store running sum
+        result = [0] * len(nums)
+        result[0] = nums[0]
 
+        # look thru list starting from index 1, add prev sum to current element
+        for i in range(1, len(nums)):
+            result[i] = result[i-1] + nums[i]
+
+        # return list containing running sum
         return result
     
-
 if __name__ == "__main__":
-    sample1 = [2, 3, 5, 1, 6]
-    sample2 = [1, 1, 1, 1, 1]
-    sample3 = [-1, 2, -3, 4, -5]
+    solution = Solution()
 
-    print(Solution().runningSum(sample1))
-    print(Solution().runningSum(sample2))
-    print(Solution().runningSum(sample3))
+    # test case
+    testInputs = [
+        [2,3,5,1,6],
+        [1,1,1,1,1],
+        [-1,2,-3,4,-5]
+    ]
+
+    for input_arr in testInputs:
+        output = solution.runningSum(input_arr)
+
+        print(" ".join(map(str, output)))
