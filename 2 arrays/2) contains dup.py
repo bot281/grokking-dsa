@@ -1,14 +1,20 @@
-# given int array nums, return true if any val shows up at least 2x, but false if every element is unique
+class Solution:
+    def containsDuplicate(self, nums):
+      # TODO: Write your code here
+      temp = []
+      for n in nums:
+        if n in temp:
+           return True
+        else:
+           temp.append(n)
+      return False
 
-sample = [1,2,3]
+if __name__ == "__main__":
+   sample1 = [1,2,3,4]
+   sample2 = [1,2,3,1]
+   sample3 = [3,2,6,-1,2,1]
 
-temp = []
-
-for n in sample:
-    if n in temp:
-        print(True)
-        break
-    else:
-        temp.append(n)
-else:
-    print(False)
+   solution = Solution()
+   print(solution.containsDuplicate(sample1))
+   print(solution.containsDuplicate(sample2))
+   print(solution.containsDuplicate(sample3))
